@@ -23,49 +23,17 @@ pear install Console_Getopt
 
 #Installing Dependencies for Google Voice
 ###
-#Install iksemel
-cd /usr/src
-wget https://iksemel.googlecode.com/files/iksemel-1.4.tar.gz
-tar xf iksemel-1.4.tar.gz
-cd iksemel-*
-./configure
-make
-make install
-ldconfig
+
 
 #Install and Configure Asterisk
 cd /usr/src
 wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
 wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-1.4-current.tar.gz
-wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-11-current.tar.gz
 wget -O jansson.tar.gz https://github.com/akheron/jansson/archive/v2.7.tar.gz
 wget http://www.pjsip.org/release/2.4/pjproject-2.4.tar.bz2
 
-#Compile and install DAHDI (Needed for PSTN hardware, for example, a T1 or E1 card, or a USB device)
-cd /usr/src
-tar xvfz dahdi-linux-complete-current.tar.gz
-rm -f dahdi-linux-complete-current.tar.gz
-cd dahdi-linux-complete-*
-make all
-make install
-make config
-cd /usr/src
-tar xvfz libpri-1.4-current.tar.gz
-rm -f libpri-1.4-current.tar.gz
-cd libpri-*
-make
-make install
 
-#Compile and install pjproject
-cd /usr/src
-tar -xjvf pjproject-2.4.tar.bz2
-rm -f pjproject-2.4.tar.bz2
-cd pjproject-2.4
-#./configure --enable-shared --disable-sound --disable-resample --disable-video --disable-opencore-amr
-./configure --enable-shared --enable-sound --enable-resample --enable-video --disable-opencore-amr
-make dep
-make
-make install
 
 #Compile and Install jansson
 cd /usr/src
@@ -79,8 +47,8 @@ make install
 
 #Compile and install Asterisk
 cd /usr/src
-tar xvfz asterisk-13-current.tar.gz
-rm -f asterisk-13-current.tar.gz
+tar xvfz asterisk-11-current.tar.gz
+rm -f asterisk-11-current.tar.gz
 cd asterisk-*
 contrib/scripts/get_mp3_source.sh
 contrib/scripts/install_prereq install
